@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-
+#include "stack.h"
+#include "tree.h"
 
 void printCommands()
 {
