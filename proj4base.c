@@ -5,6 +5,7 @@
 #include "stack.h"
 #include "tree.h"
 
+// Hello, testing the push of github, this is from Zak
 void printCommands()
 {
  printf ("The commands for this program are:\n\n");
