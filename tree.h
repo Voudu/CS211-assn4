@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <stack.h>
 
+// hi
+
 typedef struct treeNode{
 	
 	 struct stackNode* elem;
