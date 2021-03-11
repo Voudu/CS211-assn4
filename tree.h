@@ -7,7 +7,7 @@
 
 typedef struct treeNode{
 	
-	 struct stackNode* elem;
+	 struct stackNode* elem; // THIS NEEDS TO HOLDS STRINGS NOT STACK NODES
 	 struct treeNode* left;
 	 struct treeNode* right;	 
 } t_node;

@@ -7,7 +7,7 @@
 
 typedef struct stackNode{
 	
-	char* elem;
+	char* elem; // THIS NEEDS TO HOLD TREE NODES NOT STRINGS
 	node* next;
 	
 } node;
