@@ -3,17 +3,15 @@ void stackInit(s_node* head){
 	 *head = NULL;
 }
 
-void push(s_node* head, char *val){
+void push(s_node* head, t_node* treeNode){
 	 
 	 s_node* newNode = (s_node*) malloc(sizeof(s_node));
-	 newNode->elem = *val;
+	 newNode->elem = *treeNode;
 	 newNode->next = *hd;
 	 *hd = newNode;
-	 
-	 printf("Pushed %c\n", *val);
 }
 
-int isEmpty(s_node* head){
+int isEmpty(s_node head){
 	
 	 if(head == NULL){
 		 return TRUE;
@@ -23,16 +21,24 @@ int isEmpty(s_node* head){
 	 }
 }
 
-s_node* pop(s_node* head){
+t_node* pop(s_node* head){
 	 
 	 if(isEmpty(*head) == TRUE){
 		 return;
 	 }
 	 
+	 // create a t_node pointer which points to the head's element
+	 t_node* retElem = *head->elem;
+	 
+	 // set a temp stack node = to the head
 	 s_node* temp = *head;
+	 
+	 // set head equal to the next node in the stack
 	 *head = temp->next;
 	 
-	 return temp;
+	 // free the old head & return its element
+	 free(temp);	 
+	 return retElem;
 }
 
 void clear(s_node* head){

@@ -13,7 +13,7 @@ typedef struct stackNode{
 } s_node;
 
 void stackInit(node* head); // Initializes head to NULL
-void push(node* head, char* val);
-int isEmpty(node* head);
-node* pop(node* head);
+void push(node* head, t_node* treeNode);
+int isEmpty(node head);
+t_node* pop(node* head);
 void clear(node* head);
