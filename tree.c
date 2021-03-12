@@ -1,24 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "tree.h"
+#include "stack.h"
 
-typedef struct TreeNode
-{
-	int elem;
-	struct TreeNode *left;
-	struct TreeNode *right;
-} node;
+// Changed the name of the treenode to t_node
+// Need to change the name of the stack node to s_node
 
-node *newNode(int val)
+t_node *newNode(char* val)
 {
 
-	node *ptr = (node *)malloc(sizeof(node));
+	t_node *ptr = (t_node *)malloc(sizeof(t_node));
 	ptr->elem = val;
 	ptr->left = NULL;
 	ptr->right = NULL;
 	return ptr;
 }
 
-void preOrderprint(node *r)
+void preOrderprint(t_node *r)
 {
 	if (r == NULL)
 		return;
@@ -31,7 +29,7 @@ void preOrderprint(node *r)
 	preOrderprint(r->right);
 }
 
-void inOrderprint(node *r)
+void inOrderprint(t_node *r)
 {
 	if (r == NULL)
 		return;
@@ -44,7 +42,7 @@ void inOrderprint(node *r)
 	inOrderprint(r->right);
 }
 
-void postOrderprint(node *r)
+void postOrderprint(t_node *r)
 {
 	if (r == NULL)
 		return;
@@ -57,10 +55,46 @@ void postOrderprint(node *r)
 	printf("%d,  ", r->elem);
 }
 
+t_node* parseExpression(char* e[]) {
+	//char input[] = “60 43 18 * +57 +”;
+	s_node* head;
+	//t_node* root;
+	stackInit(head);
+	char *ptr = strtok(e, “ “);
+	t_node *root;
+
+	while (ptr != NULL)
+	{
+
+		//printf(“% s “, ptr);
+		ptr = strtok(NULL, “ “);
+		
+		if (isdigit(atoi(ptr)) > 0)
+		{
+			push(head, newNode(ptr));
+		}
+
+		else {
+			root = newNode(ptr);
+			
+			// Pop top value
+			//t_node *temp = pop(head);
+			root->right = pop(head);
+			//t_node *temp2 = pop(root);
+			root->left = pop(head);
+			push(head, root);
+		}
+
+		root = pop(head);
+		return root;
+	}
+
+}
+
 int main(int argc, char const *argv[])
 {
 
-	node *root = newNode(6);
+	t_node *root = newNode(6);
 	root->left = newNode(8);
 	root->right = newNode(3);
 	root->left->left = newNode(9);

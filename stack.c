@@ -1,3 +1,5 @@
+#include "stack.h"
+#include "tree.h"
 void stackInit(s_node* head){
 	
 	 *head = NULL;
