@@ -1,17 +1,19 @@
-void stackInit(node* head){
+void stackInit(s_node* head){
 	
 	 *head = NULL;
 }
 
-void push(node* head, char *val){
+void push(s_node* head, char *val){
 	 
-	 node* newNode = (node*) malloc(sizeof(node));
+	 s_node* newNode = (s_node*) malloc(sizeof(s_node));
 	 newNode->elem = *val;
 	 newNode->next = *hd;
 	 *hd = newNode;
+	 
+	 printf("Pushed %c\n", *val);
 }
 
-int isEmpty(node* head){
+int isEmpty(s_node* head){
 	
 	 if(head == NULL){
 		 return TRUE;
@@ -21,25 +23,25 @@ int isEmpty(node* head){
 	 }
 }
 
-node* pop(node* head){
+s_node* pop(s_node* head){
 	 
 	 if(isEmpty(*head) == TRUE){
 		 return;
 	 }
 	 
-	 node* temp = *head;
+	 s_node* temp = *head;
 	 *head = temp->next;
 	 
 	 return temp;
 }
 
-void clear(node* head){
+void clear(s_node* head){
 	
 	 if(*head == NULL){
 		 return;
 	 }
 	 
-	 node* temp = *head;
+	 s_node* temp = *head;
 	 
 	 while(temp != NULL){
 		 

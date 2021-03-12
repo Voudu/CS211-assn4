@@ -10,7 +10,7 @@ typedef struct stackNode{
 	struct treeNode* elem;
 	struct stackNode* next;
 	
-} node;
+} s_node;
 
 void stackInit(node* head); // Initializes head to NULL
 void push(node* head, char* val);

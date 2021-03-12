@@ -5,7 +5,6 @@
 #include "stack.h"
 #include "tree.h"
 
-// Hello, testing the push of github, this is from Zak
 void printCommands()
 {
  printf ("The commands for this program are:\n\n");
@@ -14,18 +13,14 @@ void printCommands()
  printf ("or any postfix mathematical expression using operators of *, /, +, -\n");
 }
 
-
-
 int main(int argc, char const *argv[])
 {
-
 
   char input[300];
   
   /* set up an infinite loop */
   while (1)
   {
-
   
     fgets(input,300,stdin);
     /* remove the newline character from the input */
@@ -33,6 +28,15 @@ int main(int argc, char const *argv[])
 
      while (input[i] != '\n' && input[i] != '\0')
      {
+		// checks for alphabetical characters in the input
+		if(isalpha(input[i]) > 0){
+			// checks if the alphabetical input is a Q then break the loop
+			if(input[i] == "q" || input[i] == "Q"){
+				break;
+			}
+			// exit for invalid input, this could be nicer.
+			exit(-1);
+		}
         i++;
      }
      input[i] = '\0';
