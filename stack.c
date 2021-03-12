@@ -1,4 +1,3 @@
-
 void stackInit(node* head){
 	
 	 *head = NULL;
@@ -6,7 +5,7 @@ void stackInit(node* head){
 
 void push(node* head, char *val){
 	 
-	 nodePtr newNode = (nodePtr) malloc(sizeof(node));
+	 node* newNode = (node*) malloc(sizeof(node));
 	 newNode->elem = *val;
 	 newNode->next = *hd;
 	 *hd = newNode;
@@ -14,7 +13,7 @@ void push(node* head, char *val){
 
 int isEmpty(node* head){
 	
-	 if(*head == NULL){
+	 if(head == NULL){
 		 return TRUE;
 	 }
 	 else{
