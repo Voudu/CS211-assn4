@@ -3,14 +3,18 @@
 #include <stdlib.h>
 #include <stack.h>
 
-// hi
+
 
 typedef struct treeNode{
 	
-	 char* elem[]; // THIS NEEDS TO HOLDS STRINGS NOT STACK NODES
+	 char* elem[];
 	 struct treeNode* left;
 	 struct treeNode* right;	 
 } t_node;
 
 t_node* parseExpression(char* str);
 t_node* newNode(node* stack_node);
+
+void preOrderprint(t_node *r)
+void inOrderprint(t_node *r)
+void postOrderprint(t_node *r)

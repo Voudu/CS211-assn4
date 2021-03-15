@@ -16,6 +16,45 @@ t_node *newNode(char* val)
 	return ptr;
 }
 
+t_node* parseExpression(char* e[]) {
+	//char input[] = “60 43 18 * +57 +”;
+	
+	s_node* head;
+	stackInit(head); // Create a new stack
+	t_node *root; // Create the root note of the tree
+	root->val = " ";
+	root->left = NULL;
+	root->right = NULL;
+	
+	char *ptr = strtok(e, “ “);
+	while (ptr != NULL)
+	{
+
+		//printf(“% s “, ptr);
+		ptr = strtok(NULL, “ “);
+		
+		if (isdigit(atoi(ptr)) > 0)
+		{
+			push(head, newNode(ptr));
+		}
+
+		else {
+			root = newNode(ptr);
+			
+			// Pop top value
+			//t_node *temp = pop(head);
+			root->right = pop(head);
+			//t_node *temp2 = pop(root);
+			root->left = pop(head);
+			push(head, root);
+		}
+
+		root = pop(head);
+		return root;
+	}
+
+}
+
 void preOrderprint(t_node *r)
 {
 	if (r == NULL)
@@ -55,42 +94,7 @@ void postOrderprint(t_node *r)
 	printf("%d,  ", r->elem);
 }
 
-t_node* parseExpression(char* e[]) {
-	//char input[] = “60 43 18 * +57 +”;
-	s_node* head;
-	//t_node* root;
-	stackInit(head);
-	char *ptr = strtok(e, “ “);
-	t_node *root;
-
-	while (ptr != NULL)
-	{
-
-		//printf(“% s “, ptr);
-		ptr = strtok(NULL, “ “);
-		
-		if (isdigit(atoi(ptr)) > 0)
-		{
-			push(head, newNode(ptr));
-		}
-
-		else {
-			root = newNode(ptr);
-			
-			// Pop top value
-			//t_node *temp = pop(head);
-			root->right = pop(head);
-			//t_node *temp2 = pop(root);
-			root->left = pop(head);
-			push(head, root);
-		}
-
-		root = pop(head);
-		return root;
-	}
-
-}
-
+/*
 int main(int argc, char const *argv[])
 {
 
@@ -110,3 +114,4 @@ int main(int argc, char const *argv[])
 
 	return 0;
 }
+*/
