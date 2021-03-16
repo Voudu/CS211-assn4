@@ -18,7 +18,7 @@ void printCommands()
 int main(int argc, char const *argv[])
 {
 
-
+  t_node* root = NULL;
   char input[300];
   
   /* set up an infinite loop */
@@ -30,7 +30,7 @@ int main(int argc, char const *argv[])
 
     while (input[i] != '\n' && input[i] != '\0'){
 		if(isalpha(input[i]) > 0){
-			if(input[i] == "q" || input[i] == "Q"){
+			if(input[i] == 'q' || input[i] == 'Q'){
 				break;
 			}
 			
@@ -52,9 +52,9 @@ int main(int argc, char const *argv[])
     /* user enters an expression */
     else {
 		printf ("%s\n", input);
-
+		root = parseExpression(input);
         
-
+		preOrderprint(root);
         /* 1- Store the expression in a tree
            2- Display infix notation
            3- Display prefix notation

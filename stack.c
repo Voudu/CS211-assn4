@@ -11,6 +11,7 @@ void push(s_node* head, t_node* treeNode){
 	 newNode->elem = treeNode;
 	 newNode->next = head;
 	 head = newNode;
+	 printf("pushed %s\n", treeNode->elem);
 }
 
 int isEmpty(s_node* head){
@@ -36,10 +37,12 @@ t_node* pop(s_node* head){
 	 s_node* temp = head;
 	 
 	 // set head equal to the next node in the stack
-	 *head = *temp->next;
+	 head = temp->next;
 	 
 	 // free the old head & return its element
-	 free(temp);	 
+	 //free(temp);
+	 //printf("popped %s\n", retElem->elem);
+	 printf("7\n");
 	 return retElem;
 }
 

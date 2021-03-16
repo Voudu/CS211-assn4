@@ -14,7 +14,7 @@ t_node *newNode(char* val)
 }
 
 t_node* parseExpression(char* e) {
-	//char input[] = “60 43 18 * +57 +”;
+	//char input[] = “60 43 18 * + 57 +”;
 	
 	s_node* head;
 	stackInit(head); // Create a new stack
@@ -29,43 +29,59 @@ t_node* parseExpression(char* e) {
 	char *ptr = strtok(e, " ");
 	while (ptr != NULL)
 	{
-
-		//printf(“% s “, ptr);
-		ptr = strtok(NULL, " ");
+		printf("1: %s \n", ptr);
 		
-		if (isdigit(atoi(ptr)) > 0)
+		
+		if (*ptr == '+' || *ptr == '*' || *ptr == '/' || *ptr == '-'){
+
+			root = newNode(ptr);
+
+			// Pop top value
+			//t_node *temp = pop(head);
+			root->right = pop(head);
+
+			//t_node *temp2 = pop(root);
+			root->left = pop(head);
+			
+			push(head, root);
+
+		}
+		else
 		{
 			push(head, newNode(ptr));
 		}
 
-		else {
-			root = newNode(ptr);
-			
-			// Pop top value
-			//t_node *temp = pop(head);
-			root->right = pop(head);
-			//t_node *temp2 = pop(root);
-			root->left = pop(head);
-			push(head, root);
-		}
-
-		root = pop(head);
-		return root;
+		ptr = strtok(NULL, " ");
+		printf("\n2: %s \n", ptr);
 	}
-
+	
+	root = pop(head);
+	printf("exited loop\n");
+	return root;
 }
 
 void preOrderprint(t_node *r)
 {
+	printf("start preorderprint\n");
 	if (r == NULL)
+	{
+		printf("root is NULL\n");
 		return;
+	}
+	printf("after if\n");
 	//print node data
-	printf("%s,  ", r->elem);
+	//printf("%s,  ", r->elem);
+	//printf("after print\n");
 
 	// visit left subtree
+	printf("visit left subtree\n");
+	printf("r-left: %s", r->left->elem);
 	preOrderprint(r->left);
 	//visit right subtree
+    printf("visit right subtree\n");
 	preOrderprint(r->right);
+	
+	printf("end\n");
 }
 
 void inOrderprint(t_node *r)
