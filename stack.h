@@ -15,8 +15,8 @@ typedef struct stackNode{
 	
 } s_node;
 
-void stackInit(s_node* head); // Initializes head to NULL
-void push(s_node* head, t_node* treeNode);
+void stackInit(s_node** head); // Initializes head to NULL
+void push(s_node** head, t_node* treeNode);
 int isEmpty(s_node* head);
-t_node* pop(s_node* head);
-void clear(s_node* head);
+t_node* pop(s_node** head);
+void clear(s_node** head);

@@ -12,6 +12,7 @@ typedef struct treeNode{
 
 t_node* parseExpression(char* str);
 t_node* newNode(char* val);
+void destroyTree(t_node *r);
 
 void preOrderprint(t_node *r);
 void inOrderprint(t_node *r);

@@ -27,8 +27,9 @@ int main(int argc, char const *argv[])
     fgets(input,300,stdin);
     /* remove the newline character from the input */
     int i = 0;
-
+	
     while (input[i] != '\n' && input[i] != '\0'){
+		/*
 		if(isalpha(input[i]) > 0){
 			if(input[i] == 'q' || input[i] == 'Q'){
 				break;
@@ -36,6 +37,7 @@ int main(int argc, char const *argv[])
 			
 			exit(-1);
 		}
+		*/
         i++;
     }
     input[i] = '\0';
@@ -55,6 +57,11 @@ int main(int argc, char const *argv[])
 		root = parseExpression(input);
         
 		preOrderprint(root);
+		printf("preOrderPrint() SUCCESS!!\n");
+		inOrderprint(root);
+		printf("inOrderPrint() SUCCESS!!\n");
+		postOrderprint(root);
+		printf("postOrderPrint() SUCCESS!!\n");
         /* 1- Store the expression in a tree
            2- Display infix notation
            3- Display prefix notation
@@ -67,7 +74,7 @@ int main(int argc, char const *argv[])
   }
 
   printf ("\nGoodbye\n");
-	
+  destroyTree(root);
   return 0;
 }
 
