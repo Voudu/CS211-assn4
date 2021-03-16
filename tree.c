@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include "tree.h"
 #include "stack.h"
 
 // Changed the name of the treenode to t_node
@@ -16,22 +13,25 @@ t_node *newNode(char* val)
 	return ptr;
 }
 
-t_node* parseExpression(char* e[]) {
+t_node* parseExpression(char* e) {
 	//char input[] = “60 43 18 * +57 +”;
 	
 	s_node* head;
 	stackInit(head); // Create a new stack
 	t_node *root; // Create the root note of the tree
-	root->val = " ";
+	
+	/*
+	root->elem = " ";
 	root->left = NULL;
 	root->right = NULL;
+	*/
 	
-	char *ptr = strtok(e, “ “);
+	char *ptr = strtok(e, " ");
 	while (ptr != NULL)
 	{
 
 		//printf(“% s “, ptr);
-		ptr = strtok(NULL, “ “);
+		ptr = strtok(NULL, " ");
 		
 		if (isdigit(atoi(ptr)) > 0)
 		{
@@ -60,7 +60,7 @@ void preOrderprint(t_node *r)
 	if (r == NULL)
 		return;
 	//print node data
-	printf("%d,  ", r->elem);
+	printf("%s,  ", r->elem);
 
 	// visit left subtree
 	preOrderprint(r->left);
@@ -75,7 +75,7 @@ void inOrderprint(t_node *r)
 	// visit left subtree
 	inOrderprint(r->left);
 	//print node data
-	printf("%d,  ", r->elem);
+	printf("%s,  ", r->elem);
 
 	//visit right subtree
 	inOrderprint(r->right);
@@ -91,7 +91,7 @@ void postOrderprint(t_node *r)
 	//visit right subtree
 	postOrderprint(r->right);
 	//print node data
-	printf("%d,  ", r->elem);
+	printf("%s,  ", r->elem);
 }
 
 /*

@@ -1,11 +1,10 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
+#include <stdlib.h>
+#include <ctype.h>
 
 #include "stack.h"
-#include "tree.h"
 
-// Hello, testing the push of github, this is from Zak
 void printCommands()
 {
  printf ("The commands for this program are:\n\n");
@@ -31,23 +30,23 @@ int main(int argc, char const *argv[])
     /* remove the newline character from the input */
     int i = 0;
 
-     while (input[i] != '\n' && input[i] != '\0')
-     {
+    while (input[i] != '\n' && input[i] != '\0'){
         i++;
-     }
-     input[i] = '\0';
+    }
+    input[i] = '\0';
 
 
     /* check if user enter q or Q to quit program */
-    if ( (strcmp (input, "q") == 0) || (strcmp (input, "Q") == 0) )
-      break;
+    if ( (strcmp (input, "q") == 0) || (strcmp (input, "Q") == 0) ){
+		break;		
+	}
     /* check if user enter ? to see command list */
-    else if ( strcmp (input, "?") == 0) 
-      printCommands();
-
+    else if ( strcmp (input, "?") == 0){
+		printCommands();		
+	}
     /* user enters an expression */
     else {
-        printf ("%s\n", input);
+		printf ("%s\n", input);
 
         
 
@@ -60,12 +59,11 @@ int main(int argc, char const *argv[])
 
    
     }
-   }
+  }
 
   printf ("\nGoodbye\n");
 	
-	return 0;
-
+  return 0;
 }
 
 

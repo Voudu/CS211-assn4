@@ -1,9 +1,12 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <ctype.h>
 
-#define TRUE 1;
-#define FALSE 0;
+#include "tree.h"
+
+#define TRUE 1
+#define FALSE 0
 
 typedef struct stackNode{
 	
@@ -12,8 +15,8 @@ typedef struct stackNode{
 	
 } s_node;
 
-void stackInit(node* head); // Initializes head to NULL
-void push(node* head, t_node* treeNode);
-int isEmpty(node head);
-t_node* pop(node* head);
-void clear(node* head);
+void stackInit(s_node* head); // Initializes head to NULL
+void push(s_node* head, t_node* treeNode);
+int isEmpty(s_node* head);
+t_node* pop(s_node* head);
+void clear(s_node* head);
