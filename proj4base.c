@@ -24,13 +24,18 @@ int main(int argc, char const *argv[])
   /* set up an infinite loop */
   while (1)
   {
-
-  
     fgets(input,300,stdin);
     /* remove the newline character from the input */
     int i = 0;
 
     while (input[i] != '\n' && input[i] != '\0'){
+		if(isalpha(input[i]) > 0){
+			if(input[i] == "q" || input[i] == "Q"){
+				break;
+			}
+			
+			exit(-1);
+		}
         i++;
     }
     input[i] = '\0';
