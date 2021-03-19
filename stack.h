@@ -19,6 +19,8 @@ typedef struct stackNode
 } s_node;
 
 // Function prototypes
+char getVal(s_node *head);
+int getSize(s_node *head);
 void stackInit(s_node **head);
 void push(s_node **head, t_node *treeNode);
 int isEmpty(s_node *head);

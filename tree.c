@@ -24,6 +24,7 @@ t_node *parseExpression(char *e)
 	//char input[] = “60 43 18 * + 57 +”;
 
 	s_node *head;
+	int size;
 	stackInit(&head); // Create a new stack
 	t_node *root;	  // Create the root note of the tree
 
@@ -33,6 +34,12 @@ t_node *parseExpression(char *e)
 		// If the value is an operator
 		if (*ptr == '+' || *ptr == '*' || *ptr == '/' || *ptr == '-')
 		{
+			if (getSize(head) < 2)
+			{
+				printf("\nInvalid expression. Enter a valid postfix expression \n");
+				//clear(&head);
+				return NULL;
+			}
 			// Initialize space for a new root node
 			root = newNode(ptr);
 
@@ -51,6 +58,12 @@ t_node *parseExpression(char *e)
 
 		// Get the next val
 		ptr = strtok(NULL, " ");
+	}
+	if (getSize(head) != 1)
+	{
+		printf("Invalid expression. Enter a valid postfix expression \n");
+		clear(&head);
+		return NULL;
 	}
 
 	// Set root to the final value in head, clear head, return the desired value
@@ -150,7 +163,7 @@ void destroyTree(t_node *r)
 
 	destroyTree(r->left);
 	destroyTree(r->right);
-	printf("node memory freed\n");
+	//printf("node memory freed\n");
 
 	free(r);
 	// clear all tree node memory...

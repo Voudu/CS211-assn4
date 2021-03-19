@@ -50,18 +50,27 @@ int main(int argc, char const *argv[])
     else
     {
       // Parse the user input
+      printf("%s", input);
       root = parseExpression(input);
+      if (root == NULL)
+      {
+        continue;
+      }
 
       // Print out the values in the desired order and return the final calc
-      printf("Infix notation: ");
-      inFixPrint(root);
-      printf("\nPrefix notation: ");
-      preOrderprint(root);
-      printf("\nPostfix notation: ");
-      postOrderprint(root);
-      printf("\nExpression result: ");
-      result = evalExpression(root);
-      printf("%d\n", result);
+      else
+      {
+
+        printf("\nInfix notation: ");
+        inFixPrint(root);
+        printf("\nPrefix notation: ");
+        preOrderprint(root);
+        printf("\nPostfix notation: ");
+        postOrderprint(root);
+        printf("\nExpression result: ");
+        result = evalExpression(root);
+        printf("%d\n\n", result);
+      }
     }
   }
 

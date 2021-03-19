@@ -1,6 +1,22 @@
 // This file contains all the code for building a stack
 #include "stack.h"
 
+char getVal(s_node *head)
+{
+	return head->elem->elem[0];
+}
+
+int getSize(s_node *head)
+{
+	int size = 0;
+	while (head != NULL)
+	{
+		size++;
+		head = head->next;
+	}
+	return size;
+}
+
 // Initialize the values required for stack
 void stackInit(s_node **head)
 {
@@ -31,7 +47,7 @@ t_node *pop(s_node **head)
 	// Checks to see if the head is empty
 	if (isEmpty(*head) == TRUE)
 	{
-		printf("stack is empty, not popping - returning NULL\n");
+		//printf("stack is empty, not popping - returning NULL\n");
 		return NULL;
 	}
 	s_node *temp = *head;
