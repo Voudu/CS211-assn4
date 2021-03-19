@@ -1,3 +1,5 @@
+// This project takes in user input and makes use of a stack to fill values in
+// a binary tree and perform the operations based on a specific arithmetic order
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -5,6 +7,7 @@
 
 #include "stack.h"
 
+// Print the initial commands
 void printCommands()
 {
   printf("The commands for this program are:\n\n");
@@ -17,6 +20,7 @@ int main(int argc, char const *argv[])
 {
 
   t_node *root = NULL;
+  int result = -999;
   char input[300];
 
   /* set up an infinite loop */
@@ -28,15 +32,6 @@ int main(int argc, char const *argv[])
 
     while (input[i] != '\n' && input[i] != '\0')
     {
-      /*
-		if(isalpha(input[i]) > 0){
-			if(input[i] == 'q' || input[i] == 'Q'){
-				break;
-			}
-			
-			exit(-1);
-		}
-		*/
       i++;
     }
     input[i] = '\0';
@@ -54,32 +49,23 @@ int main(int argc, char const *argv[])
     /* user enters an expression */
     else
     {
-      //printf ("%s\n", input);
+      // Parse the user input
       root = parseExpression(input);
 
-      /*
-		Infix notation: ( 42  +  64 )
-		Prefix notation:  +  42  64 
-		Postfix notation:  42  64  + 
-		Expression result: 106
-		*/
-
+      // Print out the values in the desired order and return the final calc
       printf("Infix notation: ");
       inFixPrint(root);
       printf("\nPrefix notation: ");
       preOrderprint(root);
       printf("\nPostfix notation: ");
       postOrderprint(root);
-      //printf("\nExpression result: ");
-      /* 1- Store the expression in a tree
-           2- Display infix notation
-           3- Display prefix notation
-           4- Display postfix notation
-           5- Display the result 
-        */
+      printf("\nExpression result: ");
+      result = evalExpression(root);
+      printf("%d\n", result);
     }
   }
 
+  // Delete the tree
   printf("\nGoodbye\n");
   destroyTree(root);
   return 0;

@@ -1,3 +1,4 @@
+// Header file stack.c
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -8,6 +9,7 @@
 #define TRUE 1
 #define FALSE 0
 
+// Stack node struct containing the value and the next element pointer
 typedef struct stackNode
 {
 
@@ -16,7 +18,8 @@ typedef struct stackNode
 
 } s_node;
 
-void stackInit(s_node **head); // Initializes head to NULL
+// Function prototypes
+void stackInit(s_node **head);
 void push(s_node **head, t_node *treeNode);
 int isEmpty(s_node *head);
 t_node *pop(s_node **head);
